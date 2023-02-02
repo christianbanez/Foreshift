@@ -47,7 +47,7 @@ the run it.
 
 ## Deployment
 
-The Web Applicatioon is deployed using AWS EC2 cloud service.
+The Web Application is deployed using AWS EC2 cloud service.
 You can check it out here: [Foreshift Web Application](http://13.212.229.116:8000/)
 
 ## Built With
