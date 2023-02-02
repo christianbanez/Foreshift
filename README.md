@@ -60,8 +60,8 @@ You can check it out here: [Foreshift Web Application](http://13.212.229.116:800
 
   - **Christian John Bañez**
   - **Vea Therese Cruz** 
-  -**Princess Nicole Salvador** 
-  -**Ibanica Dionisio** 
+  - **Princess Nicole Salvador** 
+  - **Ibanica Dionisio** 
 
 ## Acknowledgments
 
