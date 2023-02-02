@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Foreshift | Test{% endblock %}
+{% load static %}
+{% block body %}
+<div class="container justify-content-end">
+  <div class="row justify-content-between banner_result">
+    <div class="col-sm-4 col-md-4 col-lg-4 animated fadeInLeft delay-1">
+      <br><br><br><br><img src="{% static 'images/result.png' %}" width="100%"><br>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    <div class="col-sm-7 col-md-7 col-lg-7 banner animated fadeInRight delay-1">
+      <h2><i class="fa-solid fa-graduation-cap"></i></h2>
+      {% if predict == 1 %} 
+      <h1 class="shiftPercenth1">You have a <span class="has_risk">risk</span> of shifting to another course</h1>
+      {% else %}
+      <h1 class="shiftPercenth1" >You have <span class="no_risk">no risk</span> of shifting to another course</h1>
+      {% endif %}
+      <br><b>*Disclaimer:</b> This results only shows the chance of the student to shift to another course. This will only guide the student in their decision making.</p>
+
+      <div class="row justify-content-between">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <form method="POST">
+            {% csrf_token %}
+              <div class="card_question revealOnScroll delay-1" data-animation="fadeInDown">
+                <h5><i class="fas fa-poll"></i>&nbsp;Will you shift?</h5><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="shiftDecision" id="inlineRadio1" value="1" checked="checked">
+                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="shiftDecision" id="inlineRadio2" value="2">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div> 
+                <br>
+                <div class="row justify-content-between">
+                  <button type="submit" class="btn btn-primary find-out">Submit</button></a>
+                </div>
+              </div>
+          </form>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6"></div>
+      </div>
+
+    
+    </div>
+    
+  </div>
+
+  <div class="row justify-content-between banner2">
+    <div class="col-sm-2 col-md-2 col-lg-2"><br><br><br><br><img src="{% static 'images/trees-left.png' %}" width="120%"></div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+ 
+        <div class="card_result revealOnScroll delay-1" data-animation="fadeInDown">
+          <img src="{% static 'images/creative.png' %}" width="40%" class="overlap"><br>
+              <h2>The Algorithm</h2>
+              Learn more about the algorithm and factors that the test used in predicting your chances of shifting to anther course.<br>
+              <a href="{% url 'framework' %}"><button type="submit" class="btn btn-primary find-out">Read more</button></a>
+        </div>
+    </div>
+
+    <div class="col-sm-2 col-md-2 col-lg-2"><br><br><br><br><img src="{% static 'images/trees-right.png' %}" width="120%"></div>
+
+  </div>
+  <br><br><br><br><br><br>
+</div>
+<script type="text/javascript">
+  var predict = "{{ predict }}";
+</script>
+{% endblock body %}

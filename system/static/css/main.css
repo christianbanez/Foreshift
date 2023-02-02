@@ -1,0 +1,366 @@
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #777777;
+    text-align: left;
+    background-color: #fff;
+    
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+
+.body-dashboard{
+    background-color: #F4F4FF;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    margin-left: 10px;
+}
+    
+::-webkit-scrollbar-track {
+background: #ececec; 
+border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #d3d3d3; 
+border: 2px;
+border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa; 
+}
+
+.navbar a{
+    color: #002e37;
+}
+
+.bg-primary{
+    background-color: #7531f9 !important;
+}
+
+.bg-white{
+    background-color: #fff !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.bg-purple{
+    background-color: #7531f9 !important;
+}
+
+.landing{
+    margin-top: 80px;
+}
+
+.dashboard{
+    margin-top: 80px;
+}
+
+.framework{
+    margin-top: 80px;
+}
+
+.banner{
+    margin-top: 155px;
+    margin-bottom: 50px;
+}
+
+.banner h1{
+    font-size: 50px;
+    color: #002e37;
+    font-weight: bolder;
+}
+
+.banner1{
+    margin-top: 250px;
+    margin-bottom: 50px;
+}
+
+.banner2{
+    margin-top: 250px;
+    margin-bottom: 50px;
+}
+
+.banner3{
+    margin-top: 250px;
+    height: 550px;
+    /* margin-right: -100%;
+    margin-left: -100%; */
+	left: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	max-width: 100vw;
+	position: relative;
+	right: 50%;
+	width: 100vw;
+    background-position: left;
+    background-image: url("../images/college_students.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.banner3 h2{
+    margin: auto;
+    text-align: center;
+
+    color: #fff;
+    font-weight: bold;    
+}
+
+.banner2 h2{
+    color: #002e37;
+    font-weight: bolder;
+}
+
+.btn-primary{
+    background-color: #7531f9;
+    border-color: #7531f9;
+    border-radius: 15px;
+}
+
+.btn-primary:hover{
+    background-color: transparent;
+    color: #7531f9;
+}
+
+.find-out{
+    margin-top: 20px;
+
+}
+
+.margin-auto{
+    margin: auto;
+}
+
+.adjust-height{
+    display: table-cell;
+    width: 100%;
+}
+
+.overlap{
+    margin-top: -150px;
+}
+
+footer {
+    margin-top: auto;
+ }
+
+
+ .nav-center{
+    margin: auto;
+ }
+
+ .nav-icon{
+    padding-right: 10px;
+    padding-left: 10px;
+
+ }
+
+ .nav-link.user{
+    color: #777777;
+ }
+
+ .nav-link:hover{
+    color: #7531f9;
+ }
+
+ .active{
+    color: #7531f9 !important;
+ }
+
+ .nav-item.user{
+    margin-right: 15px;
+    margin-left: 15px;
+ }
+
+ .dropdown-toggle.btn-primary{
+    color: #fff;
+ }
+ .dropdown-toggle.btn-primary:focus{
+    background-color: #7531f9 !important;
+
+ }
+
+ .dropdown-toggle.btn-primary:hover{
+    background-color: #fff;
+    border-color: #5B1FCF;
+    color: #7531f9;
+ }
+
+
+.form-control{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+ .dashboard h2{
+    color:#002e37;
+    font-weight: bold;
+ }
+
+ .dashboard h4{
+    color:#002e37;
+    font-weight: bold;
+ }
+
+ .dashboard-img{
+    margin-top: 250px;
+ }
+
+ .demographic{
+    margin-top: 70px;
+    margin-left: 40px;
+    padding-left: 30px;
+ }
+
+ .left-line{
+    border-left: 3px solid #E9E7FF;
+ }
+ 
+.demographic h5{
+    color:#002e37;
+}
+
+.framework h1{
+    font-size: 50px;
+    color:#002e37;
+    font-weight: bold;
+}
+
+.framework-header{
+    text-align: center;
+}
+
+.framework-factors{
+    margin-top: 100px;
+    text-align: center;
+}
+
+.framework-factors h2{
+    color:#002e37;
+    font-weight: bold;
+}
+
+.framework-factors.factors{
+    margin-top: 50px;
+}
+
+
+.framework-factors i{
+    color: #7531f9;
+    font-size: 40px;
+}
+
+.framework-dot {
+    height: 60px;
+    width: 60px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+
+.framework-dot.purple{
+    background-color: #E2F6E9;
+}
+
+
+#modal {
+    left: 50%;
+    margin: -250px 0 0 -40%;
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    visibility: visible;
+    width: 80%;
+    box-shadow: 0 3px 7px rgba(0,0,0,.25);
+    box-sizing: border-box;
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+}
+
+    #modal:target{
+        opacity: 0;
+        top: -50%;
+        visibility: hidden;
+    }
+
+    #modal .header, #modal .footer {
+        border-bottom: 1px solid #e7e7e7;
+        border-radius: 5px 5px 0 0;
+    }
+
+    #modal .footer {
+        border: none;
+        border-top: 1px solid #e7e7e7;
+        border-radius: 0 0 5px 5px;
+    }
+
+    #modal h2 {
+        margin: 0;
+    }
+
+    #modal .btn {
+        float: right;
+    }
+
+    #modal .copy, #modal .header, #modal .footer {
+        padding: 15px;
+    }
+
+.modal-content {
+    background: #f7f7f7;
+    position: relative;
+    z-index: 20;
+    border-radius: 5px;
+}
+
+#modal .copy {
+    background: #fff;
+}
+
+#modal .overlay {
+    background-color: #000;
+    background: rgba(0,0,0,.5);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+
+h4 .description{
+    font-size: 24px;
+    color: #a0a0a0;
+    font-weight: 400;
+}
+
+.fixed-top {
+    margin-top: 5%;
+}
+
+.has_risk {
+    color: #fa8334;
+}
+
+.no_risk {
+    color: #4a9f6b !important;
+}

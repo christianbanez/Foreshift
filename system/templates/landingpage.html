@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}Foreshift{% endblock %}
+{% load static %}
+{% block body %}
+
+<div class="container justify-content-end landing">
+
+  <div class="row justify-content-between">
+    <div class="col-sm-12 col-md-4 col-lg-4 banner animated fadeInLeft delay-1">
+      <h2><i class="fa-solid fa-graduation-cap"></i></h2>
+      <h1>Are you on the right course?</h1>
+      <p>By answering a few questions, you will know your chance to shift to another program.</p>
+      <a href="{% url 'test' %}"><button type="button" class="btn btn-primary find-out">Find out</button></a>
+
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-8 animated fadeInRight delay-1">
+      <img src="{% static 'images/landing_bg.png' %}" width="100%">
+    </div>
+  </div>
+
+  <div class="row justify-content-between banner2">
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="card-green revealOnScroll delay-1" data-animation="fadeInLeft">
+        <div class="row justify-content-between">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <img src="{% static 'images/reading-glasses.png' %}" width="90%" class="overlap"><br>
+            <h2>Study right.</h2>
+            It can be challenging to live in college. You are entering maturity and taking on a lot of new experiences and obligations. It is more fruitful to acquire relevant knowledge and skills from a course that you really want.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="card-purple revealOnScroll delay-1" data-animation="fadeInDown">
+        <div class="row justify-content-between">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <img src="{% static 'images/problem-solving.png' %}" width="90%" class="overlap"><br>
+            <h2>Know yourself.</h2>
+            The right course that fits your interests, skills, or hobbies will let you learn more and enjoy the field you will be taking. Pay attention to every detail and see what strikes a chord with you
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="card-orange revealOnScroll delay-1" data-animation="fadeInRight">
+        <div class="row justify-content-between">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <img src="{% static 'images/urgent.png' %}" width="90%" class="overlap"><br>
+            <h2>Save time.</h2>
+            Taking programs that are not aligned with what you want costs you time. If you select the wrong major, only to change courses midway, you will lose considerable time. Save your time for something that is right for you.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-between banner3">
+    <h2 class="revealOnScroll delay-2" data-animation="fadeInDown"><i class="fa-solid fa-calculator"></i><br>Predictions made by an algorithm from real data.</h2>
+  </div>
+
+  <div class="row justify-content-between banner2">
+    <div class="col-sm-5 col-md-5 col-lg-5 margin-auto revealOnScroll delay-2" data-animation="fadeInLeft">
+      <img src="{% static 'images/logic.gif' %}" width="80%">
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 margin-auto revealOnScroll delay-2" data-animation="fadeInRight">
+      <h2><i class="fa-solid fa-cubes"></i></h2>
+      <h2>What are the factors to shifting?</h2>
+      <p>Listed are factors that influence a student to shift to another course</p>
+
+      <ul>
+        <li>Quality of instruction</li>
+        <li>Major course content</li>
+        <li>Academic advising</li>
+        <li>Overall college experience</li>
+        <li>Interest in the subject</li>
+      </ul>
+      <a href="{% url 'framework' %}"><button type="button" class="btn btn-primary find-out">Read more</button></a>
+
+    </div>
+  </div>
+</div><br><br><br><br><br>
+{% endblock body %}

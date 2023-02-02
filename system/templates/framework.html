@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}Foreshift | Framework{% endblock %}
+{% load static %}
+{% block body %}
+<div class="container justify-content-end framework">
+    <div class="row justify-content-between animated fadeInDown delay-1">
+        <div class="col-sm-12 col-md-12 col-lg-12 framework-header">
+            <h2><i class="fa-solid fa-cubes"></i></h2>
+            <h1>Framework</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-between animated fadeInDown delay-2">
+        <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        <div class="col-sm-8 col-md-8 col-lg-8 framework-header">
+            <p>The framework of the test mainly utilizes an algorithm that will predict if a student will shift to another course. The following factors are based on past studies that seek what factors were seen amongst students who shift.</p>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    </div>
+
+    <div class="row justify-content-between framework-factors animated fadeInDown delay-3">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h2>Shifting Factors</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-between framework-factors factors animated fadeInDown delay-4">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-chalkboard-user"></i></span>
+            <h5>Quality of Instruction</h5>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-newspaper"></i></span>
+            <h5>Major Course Content</h5>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-comments"></i></span>
+            <h5>Academic Advising</h5>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-sharp fa-solid fa-graduation-cap"></i></span>
+            <h5>Overall College Experience</h5>
+        </div>
+    </div>
+
+    <div class="row justify-content-between framework-factors factors animated fadeInDown delay-5">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-book"></i></span>
+            <h5>Interest in Subject</h5>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-briefcase"></i></span>
+            <h5>Preparation for career</h5>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-users"></i></span>
+            <h5>Class Size</h5>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-calculator"></i></span>
+            <h5>Grading</h5>
+        </div>
+    </div>
+
+    <div class="row justify-content-between framework-factors factors animated fadeInDown delay-6">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-circle-xmark"></i></span>
+            <h5>Failing in Former Major</h5>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-award"></i></span>
+            <h5>Academic Placement</h5>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-masks-theater"></i></span>
+            <h5>Personality Traits</h5>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <span class="framework-dot purple"><i class="fa-solid fa-handshake-simple"></i></span>
+            <h5>Values</h5>
+        </div>
+    </div>
+
+    <div class="row justify-content-between framework-factors factors animated fadeInDown delay-7">
+        <div class="col-sm-4 col-md-4 col-lg-4"></div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <span class="framework-dot purple"><i class="fa-solid fa-user-group"></i></span>
+            <h5>Social Behavior</h5>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4"></div>
+    </div>
+
+    <!-- <div class="row justify-content-between">
+          <div class="col-sm-6 col-md-6 col-lg-6"></div>
+          <div class="col-sm-6 col-md-6 col-lg-6">
+              <div class="demographic left-line">
+                  wap
+              </div>
+          </div>
+      </div> -->
+
+    <div class="row justify-content-between framework-factors">
+        <div class="col-sm-12 col-md-12 col-lg-12 revealOnScroll delay-2"  data-animation="fadeInDown">
+            <br><br>
+            <h2>Algorithm</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-sm-5 col-md-5 col-lg-5 revealOnScroll delay-2"  data-animation="fadeInLeft">
+            <img src="{% static 'images/algorithm.gif' %}" width="90%">
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+        <div class="col-sm-6 col-md-6 col-lg-6 margin-auto revealOnScroll delay-2" data-animation="fadeInRight">  
+            <h2>Multivariate Adaptive Regression Splines (MARS) Algorithm</h2>
+            <p> Multivariate Adaptive Regression Splines (MARS) is a decision tree algorithm used for non-linear regression problems. 
+            It is a supervised machine learning that requires data labeling amongst the gathered data for the model, this is to provide context for 
+            the machine learning model to learn from the data. The algorithm was developed by Jerome H. Friedman as a new approach to flexible regression 
+            modelling of significant data. According to Friedman (1991), “this method produces continuous models with continuous derivatives." </p>
+            <p>Furthermore, MARS algorithm mainly uses piecewise linear basis functions – resulting for the regression 
+                surface to build up parsimoniously. Multivariate adaptive regression splines (MARS) algorithm is one of the few tree-based data mining algorithms in predicting.</p>
+
+        </div>
+    </div>
+
+
+</div><br><br><br><br><br><br><br><br>
+{% endblock body %}

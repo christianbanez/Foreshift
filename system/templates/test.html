@@ -1,0 +1,761 @@
+{% extends 'base.html' %}
+{% block title %}Foreshift | Test{% endblock %}
+{% load static %}
+{% block body %}
+<div class="wrapper d-flex align-items-stretch">
+  <div class="container justify-content-end landing" id="test_header">
+    <div class="row justify-content-between">
+      <div class="col-sm-12 col-md-1 col-lg-1"></div>
+
+      <div class="col-sm-12 col-md-10 col-lg-10">
+        <form id="shiftTest" action="" method="POST">
+          {% csrf_token %}
+					{{ form.errors }}
+					{{ form.non_field_errors }}
+          <div class="tab revealOnScroll delay-1" data-animation="fadeInDown">
+            <img src="{% static 'images/know-you-first.png' %}" width="100%" class="dts-logo"><br><br><br>
+
+            <div class="row justify-content-between">
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <label for="companyName" class="form-label">First Name {{row}}</label> 
+                <input class="form-control login" type="text" id="first_name" name="first_name" aria-describedby="emailHelp" required>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <label for="companyName" class="form-label">Last Name</label>
+                <input class="form-control login" type="text" id="last_name" name="last_name" aria-describedby="emailHelp" required>
+              </div>
+            </div>
+
+            <div class="row justify-content-between">
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <br>
+                <label for="companyName" class="form-label">Gender</label>
+                <select class="form-select" id="gender" name="gender" aria-label="Default select example">
+                  <option value="Female" selected>Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Non Binary">Non-Binary</option>
+                </select>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-6"></div>
+            </div>
+
+            <br>
+            <hr><br>
+
+            <div class="row justify-content-between">
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <h4>Academic Strand</h4>
+                <label for="companyName" class="form-label" style="margin-top: 30px">Senior High School Strand</label>
+                <select class="form-select" name="shs_strand" id="shs_strand" aria-label="Default select example">
+                  {% for s in strand %}
+                  <option value="{{ s.1 }}">{{ s.0 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <h4>College Application*</h4>
+                <label for="companyName" class="form-label" style="margin-top: 30px">First Course Choice</label>
+                <select class="form-select" name="first_choice" id="first_choice" aria-label="Default select example" required>
+                  {% for c in course %}
+                  <option value="{{ c.1 }}">{{ c.0 }}</option>
+                  {% endfor %}
+                </select>
+
+                <br>
+                <label for="companyName" class="form-label">Second Course Choice</label>
+                <select class="form-select" name="second_choice" id="second_choice" aria-label="Default select example" required>
+                  {% for c in course %}
+                  <option value="{{ c.1 }}">{{ c.0 }}</option>
+                  {% endfor %}
+                </select>
+
+                <br>
+                <label for="companyName" class="form-label">Third Course Choice</label>
+                <select class="form-select" name="third_choice" id="third_choice" aria-label="Default select example" required>
+                  {% for c in course %}
+                  <option value="{{ c.1 }}">{{ c.0 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <br>
+            <hr><br>
+
+            <div class="row justify-content-between">
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <br>
+                <h4>Course Information*</h4>
+                <label for="companyName" class="form-label" style="margin-top: 30px">Current College</label>
+                <select class="form-select" name="current_college" id="current_college" aria-label="Default select example" required>
+                  <option selected disabled >-- Select College Department --</option>
+                  {% for dept in department %}
+                  <option value="{{ dept.1 }}">{{ dept.0 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <br>
+                <label for="companyName" class="form-label" style="margin-top: 65px">Current Course</label>
+                <select class="form-select" name="current_course" id="current_course" aria-label="Default select example" required>
+                  <option selected disabled >-- Select Course --</option>
+                  {% for c in course %}
+                  <option class="{% if c in cet %}cet{% elif c in plmbs %}plmbs{% elif c in arch %}arch{% elif c in ced %}ced{% elif c in chass %}chass{% elif c in cpt %}cpt{% elif c in cn %}cn{% elif c in cs %}cs{% endif %}" value="{{ c.1 }}">{{ c.0 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <div class="row justify-content-between">
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <br>
+                <label for="companyName" class="form-label">Year</label>
+                <select class="form-select" name="current_year" id="current_year" aria-label="Default select example" required>
+                  {% for y in year %}
+                  <option value="{{ y.1 }}">{{ y.0 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <br>
+                <label for="companyName" class="form-label">Block Size</label>
+                <select class="form-select" name="no_of_stud" id="no_of_stud" aria-describedby="emailHelp" required>
+                  {% for n in no_of_stud %}
+                  <option value="{{ n.1 }}">{{ n.0 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              
+            </div>
+            <br><br><br>
+            <i>*in Pamantasan ng Lungsod ng Maynila (PLM)</i>
+
+          </div>
+          <div class="tab revealOnScroll delay-2" data-animation="fadeInUp">
+            <img src="{% static 'images/decision_making.png' %}" width="100%" class="dts-logo"><br><br><br>
+
+            <fieldset class="dm1 highlight">
+              <div class="question" id="dm1" aria-labelledby="rate prices">I do important decisions on my own</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="dm1" class="dm1" name="dm1" required>
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="dm1" class="dm1" name="dm1">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="dm1" class="dm1" name="dm1">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="dm1" class="dm1" name="dm1">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="dm2">
+              <div class="question" id="dm2" aria-labelledby="rate prices">I considered the background of the school in choosing a particular course</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="dm2" class="dm2" name="dm2" required>
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="dm2" class="dm2" name="dm2">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="dm2" class="dm2" name="dm2">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="dm2" class="dm2" name="dm2">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="dm3">
+              <div class="question" id="dm3" aria-labelledby="rate prices">I regard the number of potential job opportunities as an important factor</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="dm3" class="dm3" name="dm3" required>
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="dm3" class="dm3" name="dm3">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="dm3" class="dm3" name="dm3">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="dm3" class="dm3" name="dm3">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="dm4">
+              <div class="question" id="prices" aria-labelledby="rate prices">I regard the level of salary offered by potential job opportunities as an important factor</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="dm4" class="dm4" name="dm4" required>
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="dm4" class="dm4" name="dm4">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="dm4" class="dm4" name="dm4">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="dm4" class="dm4" name="dm4">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="tab revealOnScroll delay-2" data-animation="fadeInUp">
+            <img src="{% static 'images/decision_making.png' %}" width="100%" class="dts-logo"><br><br><br>
+
+            <div class="row justify-content-between">
+              <div class="col-sm-2 col-md-2 col-lg-2"></div>
+              <div class="col-sm-8 col-md-8 col-lg-8">
+                <br><br><br>
+                <label for="dm5" class="form-label">Who decided for you to choose your course?</label>
+                <select class="form-select" name="decision_making5" id="decision_making5" aria-label="Default select example" required>
+                  {% for d in who_decided %}
+                  <option value="{{ d.1 }}">{{ d.0 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-sm-2 col-md-2 col-lg-2"></div>
+            </div>
+            <br><br><br><br><br><br>
+
+          </div>
+
+
+          <div class="tab revealOnScroll delay-2" data-animation="fadeInUp">
+            <img src="{% static 'images/personal_assesment.png' %}" width="100%" class="dts-logo"><br><br><br>
+
+            <fieldset class="pa1">
+              <div class="question" id="prices" aria-labelledby="rate prices">I find my skills aligned with my current course</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="pa1" class="pa1" name="pa1">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="pa1" class="pa1" name="pa1">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="pa1" class="pa1" name="pa1">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="pa1" class="pa1" name="pa1">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="pa2">
+              <div class="question" id="prices" aria-labelledby="rate prices">I find my interests aligned with my current course</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="pa2" class="pa2" name="pa2">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="pa2" class="pa2" name="pa2">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="pa2" class="pa2" name="pa2">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="pa2" class="pa2" name="pa2">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="pa3">
+              <div class="question" id="prices" aria-labelledby="rate prices">I find my hobbies aligned with my current course</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="pa3" class="pa3" name="pa3">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="pa3" class="pa3" name="pa3">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="pa3"  class="pa3" name="pa3">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="pa3" class="pa3" name="pa3">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="pa4">
+              <div class="question" id="prices" aria-labelledby="rate prices">I am having the best college experience</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="pa5" class="pa3" name="pa5">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="pa5" class="pa3" name="pa5">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="pa5"  class="pa3" name="pa5">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="pa5" class="pa3" name="pa5">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+
+          </div>
+
+          <div class="tab revealOnScroll delay-2" data-animation="fadeInUp">
+            <img src="{% static 'images/personal_assesment.png' %}" width="100%" class="dts-logo"><br><br><br>
+            <div class="row justify-content-between">
+              <div class="col-sm-2 col-md-2 col-lg-2"></div>
+              <div class="col-sm-8 col-md-8 col-lg-8">
+                <br><br><br>
+                <label for="pa5" class="form-label">Who inspired or motivated in your choice of course?</label>
+                <select class="form-select" name="personal_assesment4" id="personal_assesment4" aria-label="Default select example" required>
+                  {% for i in who_influenced %}
+                  <option value="{{ i.1 }}">{{ i.0 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-sm-2 col-md-2 col-lg-2"></div>
+              
+            </div>
+            <br><br><br><br><br><br>
+          </div>
+
+
+          <div class="tab revealOnScroll delay-2" data-animation="fadeInUp">
+            <img src="{% static 'images/course_environment.png' %}" width="100%" class="dts-logo"><br><br><br>
+
+            <fieldset class="ce1 highlight">
+              <div class="question" id="prices" aria-labelledby="rate prices">I find the class size affecting my interest in the course</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="ce1" class="ce1" name="ce1">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="ce1" class="ce1" name="ce1">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="ce1" class="ce1" name="ce1">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="ce1" class="ce1" name="ce1">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="ce2">
+              <div class="question" id="prices" aria-labelledby="rate prices">I find the class size stimulating in my learning experience</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="ce2" class="ce2" name="ce2">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="ce2" class="ce2" name="ce2">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="ce3" class="ce2" name="ce2">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="ce2" class="ce2" name="ce2">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="ce3">
+              <div class="question" id="prices" aria-labelledby="rate prices">I am in a group of friends in my current course who shares the same interests with me</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="ce3" class="ce3" name="ce3">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="ce3" class="ce3" name="ce3">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="ce3" class="ce3" name="ce3">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="ce3" class="ce3" name="ce3">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="ce4">
+              <div class="question" id="prices" aria-labelledby="rate prices">I can easily get affected/influenced by my friends’ decision</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="ce4" class="ce4" name="ce4">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="ce4" class="ce4" name="ce4">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="ce4" class="ce4" name="ce4">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="ce4" class="ce4" name="ce4">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="tab revealOnScroll delay-2" data-animation="fadeInUp">
+            <img src="{% static 'images/course_satisfaction.png' %}" width="100%" class="dts-logo"><br><br><br>
+
+            <fieldset class="cs1 highlight">
+              <div class="question" id="prices" aria-labelledby="rate prices">I find my expectations match with my current course’s curriculum content</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="cs1" class="cs1" name="cs1">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree"  value="2" id="cs1" class="cs1" name="cs1">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree"  value="3" id="cs1" class="cs1" name="cs1">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree"  value="4" id="cs1" class="cs1" name="cs1">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="cs2">
+              <div class="question" id="prices" aria-labelledby="rate prices">I like my current course</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree"  value="1" id="cs2" class="cs2" name="cs2">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="cs2" class="cs2" name="cs2">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="cs2" class="cs2" name="cs2">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="cs2" class="cs2" name="cs2">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="cs3">
+              <div class="question" id="prices" aria-labelledby="rate prices">I can easily learn lessons from the subjects that I am taking right now</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="cs3" class="cs3" name="cs3">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="cs3" class="cs3" name="cs3">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="cs3" class="cs3" name="cs3">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="cs3" class="cs3" name="cs3">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="cs4">
+              <div class="question" id="prices" aria-labelledby="rate prices">I feel like the subjects offered in my current course is lacking</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="cs4" class="cs4" name="cs4">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="cs4" class="cs4" name="cs4">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="cs4" class="cs4" name="cs4">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="cs4" class="cs4" name="cs4">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="cs5">
+              <div class="question" id="prices" aria-labelledby="rate prices">I had trouble choosing my course upon applying in PLM</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="cs5" class="cs4" name="cs5">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="cs5" class="cs4" name="cs5">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="cs5" class="cs4" name="cs5">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="cs5" class="cs4" name="cs5">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+          </div>
+
+          <div class="tab revealOnScroll delay-2" data-animation="fadeInUp">
+            <img src="{% static 'images/academic_experience.png' %}" width="100%" class="dts-logo"><br><br><br>
+
+            <fieldset class="ae1 highlight">
+              <div class="question" id="prices" aria-labelledby="rate prices">I find my entire educational experience at this course excellent</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="ae1" class="ae1" name="ae1">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="ae1" class="ae1" name="ae1">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="ae1" class="ae1" name="ae1">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="ae1" class="ae1" name="ae1">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="ae2">
+              <div class="question" id="prices" aria-labelledby="rate prices">I am satisfied with the set of instructors in my current course
+              </div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="ae2" class="ae2" name="ae2">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="ae2" class="ae2" name="ae2">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="ae2" class="ae2" name="ae2">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="ae2" class="ae2" name="ae2">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="ae3">
+              <div class="question" id="prices" aria-labelledby="rate prices">I consider my college offering an effective academic advising</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="ae3" class="ae3" name="ae3">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="ae3" class="ae3" name="ae3">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="ae3" lass="ae3" name="ae3">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="ae3" class="ae3" name="ae3">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="ae4">
+              <div class="question" id="prices" aria-labelledby="rate prices">I worry that I am not good/performing enough for my subjects</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="ae4" class="ae4" name="ae4">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="ae4" class="ae4" name="ae4">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="ae4" class="ae4" name="ae4">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="ae4" class="ae4" name="ae4">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+            <fieldset class="ae5">
+              <div class="question" id="prices" aria-labelledby="rate prices">I experienced an effective course advising in high school</div>
+              <div class="radio-container centered-choices">
+                <span class="agree-label">Strongly Agree</span>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_agree" value="1" id="ae5" class="ae5" name="ae5">
+                  <span class="very_agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="agree" value="2" id="ae5" class="ae5" name="ae5">
+                  <span class="agree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="disagree" value="3" id="ae5" class="ae5" name="ae5">
+                  <span class="disagree option"></span>
+                </label>
+                <label class="flex-stacker">
+                  <input type="radio" aria-labelledby="very_disagree" value="4" id="ae5" class="ae5" name="ae5">
+                  <span class="very_disagree option"></span>
+                </label>
+                <span class="disagree-label">Strongly Disagree</span>
+              </div>
+            </fieldset>
+            <hr>
+          </div>
+
+
+
+
+          <div style="overflow:auto;">
+            <div>
+              <a href="#test_header"><button type="button" class="btn btn-primary" id="prevBtn" onclick="nextPrev(-1)"
+                  style="float:left;">Previous</button></a>
+              <a href="#test_header"><button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)"
+                  style="float:right;">Next</button></a>
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+          </div>
+
+        </form>
+      </div>
+      <div class="col-sm-12 col-md-1 col-lg-1"></div>
+    </div>
+  </div>
+</div>
+<script>
+
+</script>
+
+{% endblock body %}

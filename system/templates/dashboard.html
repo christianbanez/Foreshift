@@ -1,0 +1,539 @@
+{% extends 'base_user.html' %}
+{% block title %}Foreshift | Dashboard{% endblock %}
+{% load static %}
+{% block body %}
+<div class="wrapper d-flex align-items-stretch">
+    <div class="container justify-content-end dashboard">
+        <div class="row justify-content-between">
+            <div class="col-sm-8 col-md-8 col-lg-8  animated fadeInLeft delay-1">
+                <h2>Dashboard</h2>
+                <div class="row justify-content-between">
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                        <div class="card-light-grey margin">
+                            <div class="row justify-content-between">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <h4>Welcome, {{ request.user.username }}</h4>
+                                    Today is <b>{{ current_datetime }}</b>
+                                    <hr>
+                                    <b>College: </b>{{ request.user.department }}
+                                    <br><b>Staff: </b>{{ request.user.accountType }}
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7 col-md-7 col-lg-7">
+                        <div class="row justify-content-between">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div style="height: 250px" class="line_chart" {% if request.user.accountType == 'Dean' and request.user.department != 'CET' %} hidden {% endif %}>
+                                    <canvas id="studentYearCET"></canvas>
+                                </div>
+                                <div style="height: 250px" class="line_chart" {% if request.user.accountType == 'Dean' and request.user.department != 'PLMBS' %} hidden {% endif %}>
+                                    <canvas id="studentYearPLMBS"></canvas>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                       
+                    </div>
+                </div>
+
+                <div class="row justify-content-between">
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                        <img src="{% static 'images/spreadsheets.gif' %}" width="90%">
+                    </div>
+                    <div class="col-sm-7 col-md-7 col-lg-7">
+                        <br>
+                        <div class="row justify-content-between">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="card-light-purple3 margin">
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}
+                                    <h5>{{ cetFirstYr }}</h5>
+                                    First Year
+                                {% endif %} 
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}   
+                                    <h5>{{ plmbsFirstYr }}</h5>
+                                    First Year
+                                {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="card-light-purple3 margin">
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}
+                                    <h5>{{ cetFourthYr }}</h5>
+                                    Fourth Year
+                                {% endif %}
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}   
+                                    <h5>{{ plmbsFourthYr }}</h5>
+                                    Fourth Year
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="card-light-purple3 margin">
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}    
+                                    <h5>{{ cetSecondYr }}</h5>
+                                    Second Year
+                                {% endif %}
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}     
+                                    <h5>{{ plmbsSecondYr }}</h5>
+                                    Second Year
+                                {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="card-light-purple3 margin">
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}       
+                                    <h5>{{ cetFifthYr }}</h5>
+                                    Fifth Year
+                                {% endif %}
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}  
+                                    <h5>{{ plmbsFifthYr }}</h5>
+                                    Fifth Year
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="card-light-purple3 margin">
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}
+                                    <h5>{{ cetThirdYr }}</h5>
+                                    Third Year
+                                {% endif %}
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}  
+                                    <h5>{{ plmbsThirdYr }}</h5>
+                                    Third Year
+                                {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="card-light-purple3 margin">
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}
+                                    <h5>{{ cetSixthYr }}</h5>
+                                    Sixth Year
+                                {% endif %}
+                                {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}  
+                                    <h5>{{ plmbsSixthYr }}</h5>
+                                    Sixth Year
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4  animated fadeInRight delay-1">
+                <div class="demographic left-line">
+                    <div class="row justify-content-between">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <h5><i class="fa-solid fa-venus-mars nav-icon"></i>Gender Demographic</h5><br>
+                            <div class="row justify-content-between">
+                                <div style="height: 250px" {% if request.user.accountType == 'Dean' and request.user.department != 'CET' %} hidden {% endif %}>
+                                        <canvas id="genderCET"></canvas>
+                                </div>
+                                <div style="height: 250px" {% if request.user.accountType == 'Dean' and request.user.department != 'PLMBS' %} hidden {% endif %}>
+                                        <canvas id="genderPLMBS"></canvas>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="card-light-orange margin">
+                                    {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}
+                                        <h5>{{ cetGenderM }}</h5>
+                                        Male
+                                    {% endif %}
+                                    {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}
+                                        <h5>{{ plmbsGenderM }}</h5>
+                                        Male
+                                    {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="card-light-green margin">
+                                    {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}
+                                        <h5>{{ cetGenderF }}</h5>
+                                        Female
+                                    {% endif %}
+                                    {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}
+                                        <h5>{{ plmbsGenderF }}</h5>
+                                        Female
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br><br>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br><br><hr><br><br>
+        <div class="row justify-content-between">
+            <div class="col-sm-12 col-md-12 col-lg-12 animated fadeInLeft delay-1">
+                <h4><span class="description"> Shifting Students</span> per course</h4>
+                <div style="height: 250px" class="line_chart" {% if request.user.accountType == 'Dean' and request.user.department != 'CET' %} hidden {% endif %}>
+                    <canvas id="studentShiftCourseCET"></canvas>
+                </div>
+                <div style="height: 250px" class="line_chart" {% if request.user.accountType == 'Dean' and request.user.department != 'PLMBS' %} hidden {% endif %}>
+                    <canvas id="studentShiftCoursePLMBS"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+        <br><br><hr><br><br>
+        <div class="row justify-content-between">
+            <div class="col-sm-6 col-md-6 col-lg-6 animated fadeInLeft delay-1">
+                {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}
+                <h4>Information Technology</h4>
+                {% endif %}
+                <div style="height: 250px" class="line_chart" {% if request.user.accountType == 'Dean' and request.user.department != 'CET' %} hidden {% endif %}>
+                    <canvas id="studentShiftIT"></canvas>
+                </div>
+                {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}
+                <h4>Accountancy</h4>
+                {% endif %}
+                <div style="height: 250px" class="line_chart" {% if request.user.accountType == 'Dean' and request.user.department != 'PLMBS' %} hidden {% endif %}>
+                    <canvas id="studentShiftAcc"></canvas>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 animated fadeInLeft delay-1">
+                {% if request.user.accountType == 'Dean' and request.user.department == 'CET' %}
+                <h4>Computer Science</h4>
+                {% endif %}
+                <div style="height: 250px" class="line_chart" {% if request.user.accountType == 'Dean' and request.user.department != 'CET' %} hidden {% endif %}>
+                    <canvas id="studentShiftCS"></canvas>
+                </div>
+                {% if request.user.accountType == 'Dean' and request.user.department == 'PLMBS' %}
+                <h4>Financial Management</h4>
+                {% endif %}
+                <div style="height: 250px" class="line_chart" {% if request.user.accountType == 'Dean' and request.user.department != 'PLMBS' %} hidden {% endif %}>
+                    <canvas id="studentShiftFM"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        
+        <br><br><br><br><br><br>
+    </div>
+</div>
+<script type="text/javascript">
+    var first_year = "{{ first_year }}";
+    var second_year ="{{ second_year }}";
+    var third_year ="{{ third_year }}";
+    var fourth_year ="{{ fourth_year }}";
+    var fifth_year ="{{ fifth_year }}";
+    var sixth_year ="{{ sixth_year }}";
+    var cetGenderM ="{{ cetGenderM }}";
+    var cetGenderF ="{{ cetGenderF }}";
+    var plmbsGenderM ="{{ plmbsGenderM }}";
+    var plmbsGenderF ="{{ plmbsGenderF }}";
+    //CET
+    //BSIT Shift
+    var bsitShift ="{{ bsitShift }}";
+    var bsitStay = "{{ bsitStay }}";
+    var bsitShift1 ="{{ bsitShift1 }}";
+    var bsitShift2 ="{{ bsitShift2 }}";
+    var bsitShift3 ="{{ bsitShift3 }}";
+    var bsitShift4 ="{{ bsitShift4 }}";
+    var bsitShift5 ="{{ bsitShift5 }}";
+    var bsitShift6 ="{{ bsitShift6 }}";
+    var bsitStay1 ="{{ bsitStay1 }}";
+    var bsitStay2 ="{{ bsitStay2 }}";
+    var bsitStay3 ="{{ bsitStay3 }}";
+    var bsitStay4 ="{{ bsitStay4 }}";
+    var bsitStay5 ="{{ bsitStay5 }}";
+    var bsitStay6 ="{{ bsitStay6 }}";
+    
+    //BSCS Shift
+    var bscsShift ="{{ bscsShift }}";
+    var bscsStay ="{{ bscsStay }}";
+    var bscsShift1 ="{{ bscsShift1 }}";
+    var bscsShift2 ="{{ bscsShift2 }}";
+    var bscsShift3 ="{{ bscsShift3 }}";
+    var bscsShift4 ="{{ bscsShift4 }}";
+    var bscsShift5 ="{{ bscsShift5 }}";
+    var bscsShift6 ="{{ bscsShift6 }}";
+    var bscsStay1 ="{{ bscsStay1 }}";
+    var bscsStay2 ="{{ bscsStay2 }}";
+    var bscsStay3 ="{{ bscsStay3 }}";
+    var bscsStay4 ="{{ bscsStay4 }}";
+    var bscsStay5 ="{{ bscsStay5 }}";
+    var bscsStay6 ="{{ bscsStay6 }}";
+
+    //BSCHE Shift
+    var bscheShift ="{{ bscheShift }}";
+    var bscheStay ="{{ bscheStay }}";
+    var bscheShift1 ="{{ bscheShift1 }}";
+    var bscheShift2 ="{{ bscheShift2 }}";
+    var bscheShift3 ="{{ bscheShift3 }}";
+    var bscheShift4 ="{{ bscheShift4 }}";
+    var bscheShift5 ="{{ bscheShift5 }}";
+    var bscheShift6 ="{{ bscheShift6 }}";
+    //BSCE Shift
+    var bsceShift ="{{ bsceShift }}";
+    var bsceStay ="{{ bsceStay }}";
+    var bsceShift1 ="{{ bsceShift1 }}";
+    var bsceShift2 ="{{ bsceShift2 }}";
+    var bsceShift3 ="{{ bsceShift3 }}";
+    var bsceShift4 ="{{ bsceShift4 }}";
+    var bsceShift5 ="{{ bsceShift5 }}";
+    var bsceShift6 ="{{ bsceShift6 }}";
+    //BSCPE Shift
+    var bscpeShift ="{{ bscpeShift }}";
+    var bscpeStay ="{{ bscpeStay }}";
+    var bscpeShift1 ="{{ bscpeShift1 }}";
+    var bscpeShift2 ="{{ bscpeShift2 }}";
+    var bscpeShift3 ="{{ bscpeShift3 }}";
+    var bscpeShift4 ="{{ bscpeShift4 }}";
+    var bscpeShift5 ="{{ bscpeShift5 }}";
+    var bscpeShift6 ="{{ bscpeShift6 }}";
+    //BSEE Shift
+    var bseeShift ="{{ bseeShift }}";
+    var bseeStay ="{{ bseeStay }}";
+    var bseeShift1 ="{{ bseeShift1 }}";
+    var bseeShift2 ="{{ bseeShift2 }}";
+    var bseeShift3 ="{{ bseeShift3 }}";
+    var bseeShift4 ="{{ bseeShift4 }}";
+    var bseeShift5 ="{{ bseeShift5 }}";
+    var bseeShift6 ="{{ bseeShift6 }}";
+    //BSECE Shift
+    var bseceShift ="{{ bseceShift }}";
+    var bseceStay ="{{ bseceStay }}";
+    var bseceShift1 ="{{ bseceShift1 }}";
+    var bseceShift2 ="{{ bseceShift2 }}";
+    var bseceShift3 ="{{ bseceShift3 }}";
+    var bseceShift4 ="{{ bseceShift4 }}";
+    var bseceShift5 ="{{ bseceShift5 }}";
+    var bseceShift6 ="{{ bseceShift6 }}";
+    //BSME Shift
+    var bsmeShift ="{{ bsmeShift }}";
+    var bsmeStay ="{{ bsmeStay }}";
+    var bsmeShift1 ="{{ bsmeShift1 }}";
+    var bsmeShift2 ="{{ bsmeShift2 }}";
+    var bsmeShift3 ="{{ bsmeShift3 }}";
+    var bsmeShift4 ="{{ bsmeShift4 }}";
+    var bsmeShift5 ="{{ bsmeShift5 }}";
+    var bsmeShift6 ="{{ bsmeShift6 }}";
+    //BSMfgE Shift
+    var bsmfgeShift ="{{ bsmfgeShift }}";
+    var bsmfgeStay ="{{ bsmfgeStay }}";
+    var bsmfgeShift1 ="{{ bsmfgeShift1 }}";
+    var bsmfgeShift2 ="{{ bsmfgeShift2 }}";
+    var bsmfgeShift3 ="{{ bsmfgeShift3 }}";
+    var bsmfgeShift4 ="{{ bsmfgeShift4 }}";
+    var bsmfgeShift5 ="{{ bsmfgeShift5 }}";
+    var bsmfgeShift6 ="{{ bsmfgeShift6 }}";
+
+    //CET Year Level
+    var cetFirstYr = "{{ cetFirstYr }}";
+    var cetSecondYr = "{{ cetSecondYr }}";
+    var cetThirdYr = "{{ cetThirdYr }}";
+    var cetFourthYr = "{{ cetFourthYr }}";
+    var cetFifthYr = "{{ cetFifthYr }}";
+    var cetSixthYr = "{{ cetSixthYr }}";
+    var cetshift1 ="{{ cetshift1 }}";
+    var cetshift2 ="{{ cetshift2 }}";
+    var cetshift3 ="{{ cetshift3 }}";
+    var cetshift4 ="{{ cetshift4 }}";
+    var cetshift5 ="{{ cetshift5 }}";
+    var cetshift6 ="{{ cetshift6 }}";
+    var cetstay1 ="{{ cetstay1 }}";
+    var cetstay2 ="{{ cetstay2 }}";
+    var cetstay3 ="{{ cetstay3 }}";
+    var cetstay4 ="{{ cetstay4 }}";
+    var cetstay5 ="{{ cetstay5 }}";
+    var cetstay6 ="{{ cetstay6 }}";
+    //Whole CET
+    var cetshift ="{{ cetshift }}";
+    var cetstay ="{{ cetstay }}";
+    //PLMBS
+    //BSA
+    var bsaShift ="{{ bsaShift }}";
+    var bsaStay ="{{ bsaStay }}";
+    var bsaShift1 ="{{ bsaShift1 }}";
+    var bsaShift2 ="{{ bsaShift2 }}";
+    var bsaShift3 ="{{ bsaShift3 }}";
+    var bsaShift4 ="{{ bsaShift4 }}";
+    var bsaShift5 ="{{ bsaShift5 }}";
+    var bsaShift6 ="{{ bsaShift6 }}";
+    var bsaStay1 ="{{ bsaStay1 }}";
+    var bsaStay2 ="{{ bsaStay2 }}";
+    var bsaStay3 ="{{ bsaStay3 }}";
+    var bsaStay4 ="{{ bsaStay4 }}";
+    var bsaStay5 ="{{ bsaStay5 }}";
+    var bsaStay6 ="{{ bsaStay6 }}";
+    //BSBAFM
+    var bsbafmShift ="{{ bsbafmShift }}";
+    var bsbafmStay ="{{ bsbafmStay }}";
+    var bsbafmShift1 ="{{ bsbafmShift1 }}";
+    var bsbafmShift2 ="{{ bsbafmShift2 }}";
+    var bsbafmShift3 ="{{ bsbafmShift3 }}";
+    var bsbafmShift4 ="{{ bsbafmShift4 }}";
+    var bsbafmShift5 ="{{ bsbafmShift5 }}";
+    var bsbafmShift6 ="{{ bsbafmShift6 }}";
+    var bsbafmStay1 = "{{ bsbafmStay1 }}";
+    var bsbafmStay2 = "{{ bsbafmStay2 }}";
+    var bsbafmStay3 = "{{ bsbafmStay3 }}";
+    var bsbafmStay4 = "{{ bsbafmStay4 }}";
+    var bsbafmStay5 = "{{ bsbafmStay5 }}";
+    var bsbafmStay6 = "{{ bsbafmStay6 }}";
+    //BSBAMM
+    var bsbammShift ="{{ bsbammShift }}";
+    var bsbammStay ="{{ bsbammStay }}";
+    var bsbammShift1 ="{{ bsbammShift1 }}";
+    var bsbammShift2 ="{{ bsbammShift2 }}";
+    var bsbammShift3 ="{{ bsbammShift3 }}";
+    var bsbammShift4 ="{{ bsbammShift4 }}";
+    var bsbammShift5 ="{{ bsbammShift5 }}";
+    var bsbammShift6 ="{{ bsbammShift6 }}";
+    var bsbammStay1 = "{{ bsbammStay1 }}";
+    var bsbammStay2 = "{{ bsbammStay2 }}";
+    var bsbammStay3 = "{{ bsbammStay3 }}";
+    var bsbammStay4 = "{{ bsbammStay4 }}";
+    var bsbammStay5 = "{{ bsbammStay5 }}";
+    var bsbammStay6 = "{{ bsbammStay6 }}";
+    //BSBAOM
+    var bsbaomShift ="{{ bsbaomShift }}";
+    var bsbaomStay ="{{ bsbaomStay }}";
+    var bsbaomShift1 ="{{ bsbaomShift1 }}";
+    var bsbaomShift2 ="{{ bsbaomShift2 }}";
+    var bsbaomShift3 ="{{ bsbaomShift3 }}";
+    var bsbaomShift4 ="{{ bsbaomShift4 }}";
+    var bsbaomShift5 ="{{ bsbaomShift5 }}";
+    var bsbaomShift6 ="{{ bsbaomShift6 }}";
+    var bsbaomStay1 = "{{ bsbaomStay1 }}";
+    var bsbaomStay2 = "{{ bsbaomStay2 }}";
+    var bsbaomStay3 = "{{ bsbaomStay3 }}";
+    var bsbaomStay4 = "{{ bsbaomStay4 }}";
+    var bsbaomStay5 = "{{ bsbaomStay5 }}";
+    var bsbaomStay6 = "{{ bsbaomStay6 }}";
+    //BSBAHRM
+    var bsbahrmShift ="{{ bsbahrmShift }}";
+    var bsbahrmStay ="{{ bsbahrmStay }}";
+    var bsbahrmShift1 ="{{ bsbahrmShift1 }}";
+    var bsbahrmShift2 ="{{ bsbahrmShift2 }}";
+    var bsbahrmShift3 ="{{ bsbahrmShift3 }}";
+    var bsbahrmShift4 ="{{ bsbahrmShift4 }}";
+    var bsbahrmShift5 ="{{ bsbahrmShift5 }}";
+    var bsbahrmShift6 ="{{ bsbahrmShift6 }}";
+    var bsbahrmStay1 = "{{ bsbahrmStay1 }}";
+    var bsbahrStay2 = "{{ bsbahrmStay2 }}";
+    var bsbahrmStay3 = "{{ bsbahrmStay3 }}";
+    var bsbahrmStay4 = "{{ bsbahrmStay4 }}";
+    var bsbahrmStay5 = "{{ bsbahrmStay5 }}";
+    var bsbahrmStay6 = "{{ bsbahrmStay6 }}";
+    //BSBABE
+    var bsbabeShift ="{{ bsbabeShift }}";
+    var bsbabeStay ="{{ bsbabeStay }}";
+    var bsbabeShift1 ="{{ bsbabeShift1 }}";
+    var bsbabeShift2 ="{{ bsbabeShift2 }}";
+    var bsbabeShift3 ="{{ bsbabeShift3 }}";
+    var bsbabeShift4 ="{{ bsbabeShift4 }}";
+    var bsbabeShift5 ="{{ bsbabeShift5 }}";
+    var bsbabeShift6 ="{{ bsbabeShift6 }}";
+    var bsbabeStay1 = "{{ bsbabeStay1 }}";
+    var bsbabeStay2 = "{{ bsbabeStay2 }}";
+    var bsbabeStay3 = "{{ bsbabeStay3 }}";
+    var bsbabeStay4 = "{{ bsbabeStay4 }}";
+    var bsbabeStay5 = "{{ bsbabeStay5 }}";
+    var bsbabeStay6 = "{{ bsbabeStay6 }}";
+    //BSENTRE
+    var bsentreShift ="{{ bsbabeShift }}";
+    var bsentreStay ="{{ bsentreStay }}";
+    var bsentreShift1 ="{{ bsentreShift1 }}";
+    var bsentreShift2 ="{{ bsentreShift2 }}";
+    var bsentreShift3 ="{{ bsentreShift3 }}";
+    var bsentreShift4 ="{{ bsentreShift4 }}";
+    var bsentreShift5 ="{{ bsentreShift5 }}";
+    var bsentreShift6 ="{{ bsentreShift6 }}";
+    var bsentreStay1 = "{{ bsentreStay1 }}";
+    var bsentreStay2 = "{{ bsentreStay2 }}";
+    var bsentreStay3 = "{{ bsentreStay3 }}";
+    var bsentreStay4 = "{{ bsentreStay4 }}";
+    var bsentreStay5 = "{{ bsentreStay5 }}";
+    var bsentreStay6 = "{{ bsentreStay6 }}";
+    //BSREM
+    var bsremShift ="{{ bsremShift }}";
+    var bsremStay ="{{ bsremStay }}";
+    var bsremShift1 ="{{ bsremShift1 }}";
+    var bsremShift2 ="{{ bsremShift2 }}";
+    var bsremShift3 ="{{ bsremShift3 }}";
+    var bsremShift4 ="{{ bsremShift4 }}";
+    var bsremShift5 ="{{ bsremShift5 }}";
+    var bsremShift6 ="{{ bsremShift6 }}";
+    var bsremStay1 = "{{ bsremStay1 }}";
+    var bsremStay2 = "{{ bsremStay2 }}";
+    var bsremStay3 = "{{ bsremStay3 }}";
+    var bsremStay4 = "{{ bsremStay4 }}";
+    var bsremStay5 = "{{ bsremStay5 }}";
+    var bsremStay6 = "{{ bsremStay6 }}";
+    //BSHM
+    var bshmShift ="{{ bshmShift }}";
+    var bshmStay ="{{ bshmStay }}";
+    var bshmShift1 ="{{ bshmShift1 }}";
+    var bshmShift2 ="{{ bshmShift2 }}";
+    var bshmShift3 ="{{ bshmShift3 }}";
+    var bshmShift4 ="{{ bshmShift4 }}";
+    var bshmShift5 ="{{ bshmShift5 }}";
+    var bshmShift6 ="{{ bshmShift6 }}";
+    var bshmStay1 = "{{ bshmStay1 }}";
+    var bshmStay2 = "{{ bshmStay2 }}";
+    var bshmStay3 = "{{ bshmStay3 }}";
+    var bshmStay4 = "{{ bshmStay4 }}";
+    var bshmStay5 = "{{ bshmStay5 }}";
+    var bshmStay6 = "{{ bshmStay6 }}";
+    //BSTM
+    var bstmShift ="{{ bstmShift }}";
+    var bstmStay ="{{ bstmStay }}";
+    var bstmShift1 ="{{ bstmShift1 }}";
+    var bstmShift2 ="{{ bstmShift2 }}";
+    var bstmShift3 ="{{ bstmShift3 }}";
+    var bstmShift4 ="{{ bstmShift4 }}";
+    var bstmShift5 ="{{ bstmShift5 }}";
+    var bstmShift6 ="{{ bstmShift6 }}";
+    var bstmStay1 = "{{ bstmStay1 }}";
+    var bstmStay2 = "{{ bstmStay2 }}";
+    var bstmStay3 = "{{ bstmStay3 }}";
+    var bstmStay4 = "{{ bstmStay4 }}";
+    var bstmStay5 = "{{ bstmStay5 }}";
+    var bstmStay6 = "{{ bstmStay6 }}";
+    //PLMBS Year Level
+    var plmbsFirstYr ="{{ plmbsFirstYr }}";
+    var plmbsSecondYr ="{{ plmbsSecondYr }}";
+    var plmbsThirdYr ="{{ plmbsThirdYr }}";
+    var plmbsFourthYr ="{{ plmbsFourthYr }}";
+    var plmbsFifthYr ="{{ plmbsFifthYr }}";
+    var plmbsSixthYr ="{{ plmbsSixthYr }}";
+    var plmbsshift1 ="{{ plmbsshift1 }}";
+    var plmbsshift2 ="{{ plmbsshift2 }}";
+    var plmbsshift3 ="{{ plmbsshift3 }}";
+    var plmbsshift4 ="{{ plmbsshift4 }}";
+    var plmbsshift5 ="{{ plmbsshift5 }}";
+    var plmbsshift6 ="{{ plmbsshift6 }}";
+    var plmbsstay1 ="{{ plmbsstay1 }}";
+    var plmbsstay2 ="{{ plmbsstay2 }}";
+    var plmbsstay3 ="{{ plmbsstay3 }}";
+    var plmbsstay4 ="{{ plmbsstay4 }}";
+    var plmbsstay5 ="{{ plmbsstay5 }}";
+    var plmbsstay6 ="{{ plmbsstay6 }}";
+    //Whole PLMBS
+    var plmbsshift ="{{ plmbsshift }}";
+    var plmbsstay ="{{ plmbsstay }}";
+    
+
+</script>
+{% endblock body %}

@@ -1,0 +1,315 @@
+.card{
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;    
+    border-radius: 20px;
+    border: none;
+    padding: 30px;
+    padding-left: 45px;
+    padding-right: 45px;
+    font-size: 14px;
+}
+
+.dot {
+    height: 30px;
+    width: 30px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot i{
+    margin: auto;
+}
+
+.dot.orange{
+    background-color: #FDA165;
+}
+
+.dot.green{
+    background-color: #CDE9D7;
+}
+
+
+.dot.purple{
+    background-color: #E9E7FF;
+}
+
+
+.card-purple{
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-left: 30px;
+    text-align: center;    
+    background-color: #E9E7FF !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;    
+    border-radius: 20px;
+    border: none;
+    padding: 30px;
+    padding-left: 45px;
+    padding-right: 45px;
+    font-size: 14px;
+}
+
+.card-purple h2{
+    color: #7531F9;
+    font-weight: bold;
+}
+
+.card-light-purple{
+    background-color: #F4F4FF !important;
+    border-radius: 20px;
+    border: none;
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 14px;
+}
+
+.card-light-purple.margin{
+    margin-top: 30px;
+}
+
+.card-light-purple span{
+    color: #7531F9;
+    font-size: 18px;
+    margin: auto;
+}
+
+.card-light-purple i{
+    vertical-align: middle;
+    margin-left: 20%;
+}
+
+.card-light-purple2{
+    background-color: #F4F4FF !important;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.card-light-purple2.margin{
+    margin-top: 30px;
+}
+
+.card-light-purple2 span{
+    color: #7531F9;
+    font-size: 18px;
+    margin: auto;
+}
+
+.card-light-purple3{
+    background-color: #F7F9FD !important;
+    text-align: left;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    padding-left: 30px;
+    font-size: 14px;
+}
+
+.card-light-purple3.margin{
+    margin-top: 15px;
+}
+
+.card-light-purple3 span{
+    color: #7531F9;
+    font-size: 18px;
+    margin: auto;
+}
+
+
+.card-light-grey{
+    background-color: #F7F9FD !important;
+    border-radius: 20px;
+    border: none;
+    padding: 30px;
+    padding-left: 45px;
+    padding-right: 45px;
+    font-size: 14px;
+}
+
+.card-light-grey.margin{
+    margin-top: 30px;
+}
+
+.card-light-grey2 h6{
+    color:#002e37;
+    font-weight: bold;
+}
+.card-light-purple.margin{
+    margin-top: 30px;
+}
+
+.card-green{
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-left: 30px;
+    text-align: center;
+    background-color: #EDFDEA !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;    
+    border-radius: 20px;
+    border: none;
+    padding: 30px;
+    padding-left: 45px;
+    padding-right: 45px;
+    font-size: 14px;
+
+}
+
+
+.card-green h2{
+    color: #4A9F6B;
+    font-weight: bold;
+}
+
+.card-light-green{
+    background-color: #E2F6E9 !important;
+    border-radius: 20px;
+    border: none;
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;;
+    font-size: 14px;
+}
+
+.card-light-green.margin{
+    margin-top: 30px;
+}
+
+.card-light-green span{
+    color: #4A9F6B;
+    font-size: 18px;
+    margin: auto;
+}
+
+.card-light-green i{
+    vertical-align: middle;
+    margin-left: 20%;
+}
+
+
+.card-orange{
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-left: 30px;
+    text-align: center;   
+    background-color: #FFE3D1 !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;    
+    border-radius: 20px;
+    border: none;
+    padding: 30px;
+    padding-left: 45px;
+    padding-right: 45px;
+    font-size: 14px;
+}
+
+.card-orange h2{
+    color: #FA8334;
+    font-weight: bold;
+}
+
+
+.card-light-orange{
+    background-color: #FFF0E9 !important;
+    border-radius: 20px;
+    border: none;
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 14px;
+}
+
+.card-light-orange.margin{
+    margin-top: 30px;
+}
+
+.card-light-orange span{
+    color: #da5d0a;
+    font-size: 18px;
+    margin: auto;
+}
+
+.card-light-orange i{
+    vertical-align: middle;
+    margin-left: 20%;
+}
+
+.card-light-orange h5{
+    color: #da5d0a;
+    font-weight: bold;
+}
+
+.card-light-green h5{
+    color: #4A9F6B;
+    font-weight: bold;
+}
+
+.card-light-purple h5{
+    color: #7531F9;
+    font-weight: bold;
+}
+
+.card-light-purple2 h5{
+    color: #7531F9;
+    font-weight: bold;
+}
+
+
+.card-light-purple3 h5{
+    color: #777777;
+    font-weight: bold;
+}
+
+.card-light-purple2 .non-binary{
+    font-size: 11px;
+    color: #777777;
+}
+
+
+.form-control{
+    border-radius: 15px;
+}
+
+.form-control.login{
+    background-color: transparent;
+    /* border-color: #7531f9; */
+}
+.login-card{
+    margin: auto;
+}
+
+.login-card-top{
+    margin-top: 50px;
+}
+
+.btn-primary.login{
+    margin-top: 30px;
+    float: right;
+}
+
+
+.fa-eye{
+    z-index: 1;
+    position: relative;
+    float: right;
+    margin-right: .6rem;
+    margin-top: -1.6rem;
+}
+.fa-eye-slash{
+    z-index: 1;
+    position: relative;
+    float: right;
+    margin-right: .6rem;
+    margin-top: -1.6rem;
+}
+
+.passwordEye{
+    z-index: -1;
+}
+
+.form-select{
+    border-radius: 15px;
+}

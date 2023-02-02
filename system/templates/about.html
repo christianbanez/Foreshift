@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Foreshift | About{% endblock %}
+{% load static %}
+{% block body %}
+<div class="container justify-content-end landing">
+  <div class="row justify-content-between">
+    <div class="col-sm-6 col-md-6 col-lg-6 animated fadeInLeft delay-1">
+        <img src="{% static 'images/team.png' %}" width="100%">
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    <div class="col-sm-5 col-md-5 col-lg-5 banner animated fadeInRight delay-1">
+      <h1>About Us</h1>
+      <p>Foreshift is a web application made by a group of researchers, in which, it uses machine learning to predict a student’s potential to shift to another course. The researchers aim to provide help in academic advising for college faculties and their students. This is to ensure that a student is on the right track for their selected career path.
+      <br><br>The research started in 2022 by Information Technology students – namely Christian John Banez, Vea Therese Cruz, Ibanica Dionisio, and Princess Nicole Salvador.</p>
+    </div>
+    
+  </div>
+</div>
+{% endblock body %}
