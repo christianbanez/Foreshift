@@ -2,7 +2,7 @@
 
 Foreshift is a Django Web Application that integrates a Machine Learning specifically MARS Algorithm. It predicts if the student who answers the 
 survey has a risk to shift or not base from the features or factors on the survey questionnaire from the Web Application. It also includes machine learning
-training code for training and testing our dataset
+training code for training and testing our dataset.
 
 ## Getting Started
 
