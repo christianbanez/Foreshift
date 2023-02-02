@@ -67,4 +67,4 @@ You can check it out here: [Foreshift Web Application](http://13.212.229.116:800
 
   - Mr. Jay Ryan Mapanao as our adviser for our thesis
   - Pamantasan ng Lungsod ng Maynila for letting us get the data needed for the thesis
-  - Ms. Criselle Centeno as our research coordinator
+
